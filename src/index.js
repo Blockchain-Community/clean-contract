@@ -37,16 +37,20 @@ export const OpenContract = (apiKey, contractJson, contractAddress) => {
   }
 
   useEffect(() => {
-    if(!apiKey || !contractJson || !contractAddress){
+    if (!apiKey || !contractJson || !contractAddress) {
       setErrorMessage("One of the parameters for OpenContract is missing!");
       return false;
     }
-    
+
     (async function fetchData() {
       await loadWeb3()
       await loadContract(apiKey, contractJson, contractAddress)
     })()
   }, [])
 
-  
+  if (errorMessage) {
+    return errorMessage;
+  } else {
+    return { account, contract, contractState };
+  }
 }
