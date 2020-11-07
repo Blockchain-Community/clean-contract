@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import * as Util from './utils'
+import { createAlchemyWeb3 } from "@alch/alchemy-web3";
+import Web3 from "web3";
 
 export const CleanContract = (apiKey, contractJson, contractAddress) => {
-  const [account, setAccount] = useState('')
-  const [contract, setContract] = useState(null)
-  const [contractState, setContractState] = useState(true)
-  const [errorMessage, setErrorMessage] = useState('');
+  if (!apiKey || !contractJson || !contractAddress) {
+    Util.setErrorMessage("One of the parameters for OpenContract is missing!");
+    return { errorMessage: Util.getErrorMessage() };
+  }
 
   async function loadWeb3() {
     var { ethereum, web3 } = window
@@ -20,7 +22,7 @@ export const CleanContract = (apiKey, contractJson, contractAddress) => {
 
     // get ethereum accounts
     const accounts = await ethereum.request({ method: 'eth_accounts' })
-    setAccount(accounts[0])
+    Util.setAccount(accounts[0])
   }
 
   async function loadContract(apiKey, contractJson, contractAddress) {
@@ -31,26 +33,15 @@ export const CleanContract = (apiKey, contractJson, contractAddress) => {
       contractJson.abi,
       contractAddress
     )
-    setContract(tempContract)
+    Util.setContract(tempContract)
 
-    setContractState(false)
+    Util.setContractState(false)
   }
 
-  useEffect(() => {
-    if (!apiKey || !contractJson || !contractAddress) {
-      setErrorMessage("One of the parameters for OpenContract is missing!");
-      return false;
-    }
+  (async function fetchData() {
+    await loadWeb3()
+    await loadContract(apiKey, contractJson, contractAddress)
+  })()
 
-    (async function fetchData() {
-      await loadWeb3()
-      await loadContract(apiKey, contractJson, contractAddress)
-    })()
-  }, [])
-
-  if (errorMessage) {
-    return errorMessage;
-  } else {
-    return { account, contract, contractState };
-  }
+  return { account: Util.getAccount(), contract: Util.getContract(), contractState: Util.getContractState };
 }

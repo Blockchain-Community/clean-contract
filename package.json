@@ -1,6 +1,6 @@
 {
   "name": "clean-contract",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Easily get address from wallet and initialize accessor to interact with smart contract.",
   "author": "sangya2001",
   "license": "MIT",
