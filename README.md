@@ -1,4 +1,4 @@
-# open-contract
+# clean-contract
 
 > Easily get public address from active wallet and initialize contract method accessor.🚀
 
