@@ -1,5 +1,5 @@
 {
-  "name": "open-contract",
+  "name": "@sangya2001/open-contract",
   "version": "1.0.0",
   "description": "Easily get address from wallet and initialize accessor to interact with smart contract.",
   "author": "sangya2001",
