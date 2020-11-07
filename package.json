@@ -1,7 +1,7 @@
 {
   "name": "open-contract",
   "version": "1.0.0",
-  "description": "Easily get address from walltet and initialize connection to contract.",
+  "description": "Easily get address from wallet and initialize accessor to interact with smart contract.",
   "author": "sangya2001",
   "license": "MIT",
   "repository": "sangya2001/open-contract",
@@ -24,7 +24,9 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.0.0",
+    "@alch/alchemy-web3": "^0.1.17",
+    "web3": "^1.3.0"
   },
   "devDependencies": {
     "microbundle-crl": "^0.13.10",
