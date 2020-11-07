@@ -4,6 +4,7 @@ export const OpenContract = (apiKey, contractJson, contractAddress) => {
   const [account, setAccount] = useState('')
   const [contract, setContract] = useState(null)
   const [contractState, setContractState] = useState(true)
+  const [errorMessage, setErrorMessage] = useState('');
 
   async function loadWeb3() {
     var { ethereum, web3 } = window
@@ -36,11 +37,16 @@ export const OpenContract = (apiKey, contractJson, contractAddress) => {
   }
 
   useEffect(() => {
+    if(!apiKey || !contractJson || !contractAddress){
+      setErrorMessage("One of the parameters for OpenContract is missing!");
+      return false;
+    }
+    
     (async function fetchData() {
       await loadWeb3()
       await loadContract(apiKey, contractJson, contractAddress)
     })()
   }, [])
 
-  return { account, contract, contractState }
+  
 }
