@@ -2,7 +2,7 @@
 
 > Easily get public address from active wallet and initialize contract method accessor.🚀
 
-[![NPM](https://img.shields.io/npm/v/open-contract.svg)](https://www.npmjs.com/package/open-contract) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/clean-contract.svg)](https://www.npmjs.com/package/clean-contract) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
