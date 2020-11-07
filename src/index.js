@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-export const OpenContract = (apiKey, contractJson, contractAddress) => {
+export const CleanContract = (apiKey, contractJson, contractAddress) => {
   const [account, setAccount] = useState('')
   const [contract, setContract] = useState(null)
   const [contractState, setContractState] = useState(true)

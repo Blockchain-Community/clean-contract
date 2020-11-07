@@ -17,7 +17,7 @@ import React, { useEffect } from 'react'
 //import your contract json
 import ContractJSON from './build/contracts/MyContract.json' // path to your contract build
 
-import { OpenContract } from 'open-contract'
+import { CleanContract } from 'clean-contract'
 
 export default function App() {
   const [account, setAccount] = useState('')
@@ -29,7 +29,7 @@ export default function App() {
 
   useEffect(() => {
     (async function fetchData() {
-      const result = await OpenContract(apiKey, ContractJSON, contractAddress)
+      const result = await CleanContract(apiKey, ContractJSON, contractAddress)
       const { account, contract, contractState } = result
 
       setAccount(account)
